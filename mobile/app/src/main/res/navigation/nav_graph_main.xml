@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_articles">
+
+    <action
+        android:id="@+id/action_navigation_to_articleDetailFragment"
+        app:destination="@id/articleDetailFragment"
+        app:enterAnim="@android:anim/fade_in"
+        app:popExitAnim="@android:anim/fade_out" />
+
+    <fragment
+        android:id="@+id/navigation_articles"
+        android:name="com.solvro.spaceflightnews.ui.main.ArticlesFragment"
+        android:label="@string/articles"
+        tools:layout="@layout/fragment_articles">
+        <argument
+            android:name="articlesKey"
+            android:defaultValue="@string/main_key"
+            app:argType="reference" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_history"
+        android:name="com.solvro.spaceflightnews.ui.main.ArticlesFragment"
+        android:label="@string/history"
+        tools:layout="@layout/fragment_articles">
+        <argument
+            android:name="articlesKey"
+            android:defaultValue="@string/history_key"
+            app:argType="reference" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_favorites"
+        android:name="com.solvro.spaceflightnews.ui.main.ArticlesFragment"
+        android:label="@string/favorites"
+        tools:layout="@layout/fragment_articles">
+        <argument
+            android:name="articlesKey"
+            android:defaultValue="@string/favorites_key"
+            app:argType="reference" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/articleDetailFragment"
+        android:name="com.solvro.spaceflightnews.ui.detail.ArticleDetailFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_article_detail">
+
+        <argument
+            android:name="articleDetail"
+            app:argType="com.solvro.spaceflightnews.model.Article" />
+        <action
+            android:id="@+id/action_articleDetailFragment_to_articleWebsiteFragment"
+            app:destination="@id/articleWebsiteFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/articleWebsiteFragment"
+        android:name="com.solvro.spaceflightnews.ui.detail.ArticleWebsiteFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_article_website">
+
+        <argument
+            android:name="websiteUrl"
+            app:argType="string" />
+    </fragment>
+</navigation>
